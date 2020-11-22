@@ -1,0 +1,10 @@
+__pycache__
+datasets
+env
+models
+abalone.py
+classify.py
+estimator.py
+
+*.mp4
+*.h5
