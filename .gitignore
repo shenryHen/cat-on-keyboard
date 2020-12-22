@@ -2,10 +2,10 @@ __pycache__
 datasets
 env
 models
+data
 abalone.py
 classify.py
 estimator.py
-
 *.sublime-workspace
 *.mp4
 *.h5
