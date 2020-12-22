@@ -6,5 +6,6 @@ abalone.py
 classify.py
 estimator.py
 
+*.sublime-workspace
 *.mp4
 *.h5
