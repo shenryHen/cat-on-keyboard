@@ -1,7 +1,7 @@
 from sklearn.datasets import load_files
 from sklearn.ensemble import RandomForestClassifier
 # import pdb; pdb.set_trace()
-keyboard = load_files('./data')	
+keyboard = load_files('./data')
 key_data, key_target = keyboard.data, keyboard.target
 
 from sklearn.feature_extraction.text import CountVectorizer
@@ -28,15 +28,21 @@ docs_new = [
 
 x_new_counts = count_vect.transform(docs_new)
 x_new_tfidf = tf_transformer.transform(x_new_counts)
-print(x_new_tfidf.__dir__())
 predicted = clf.predict(x_new_tfidf)
 for docs, cat in zip(docs_new, predicted):
 	print('%r => %s' % (docs, keyboard.target_names[cat]))
 
 import joblib
 joblib.dump(clf, 'catModel.pkl', compress=9)
-model_clone = joblib.load('catModel.pkl')
+joblib.dump(count_vect, 'CountVectorizer')
+joblib.dump(tf_transformer, 'tf_transformer')
 
-model_clone.predict()
-for docs, cat in zip(docs_new, model_clone):
-	print('%r => %s' % (docs, keyboard.target_names[cat]))
+model_clone = joblib.load('catModel.pkl')
+vect_clone = joblib.load('CountVectorizer')
+transformer_clone = joblib.load('tf_transformer')
+
+clone_counts = vect_clone.transform(docs_new)
+clone_tfidf = transformer_clone.transform(clone_counts)
+clone_predict = model_clone.predict(clone_tfidf)
+for docs, cat in zip(docs_new, clone_predict):
+	print('-----%r => %s' % (docs, keyboard.target_names[cat]))
