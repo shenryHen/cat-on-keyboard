@@ -4,6 +4,50 @@
 		"selected_items":
 		[
 			[
+				"prod",
+				"prod_file"
+			],
+			[
+				"X_ne",
+				"X_new_tfidf"
+			],
+			[
+				"flie",
+				"file_num"
+			],
+			[
+				"target",
+				"target_names"
+			],
+			[
+				"pre",
+				"predicted_labels"
+			],
+			[
+				"get",
+				"GET"
+			],
+			[
+				"prepr",
+				"preprocess_layer"
+			],
+			[
+				"token",
+				"tokenizer"
+			],
+			[
+				"vocab",
+				"vocab_dict"
+			],
+			[
+				"voc",
+				"vocab_dict"
+			],
+			[
+				"all",
+				"all_labeled_data"
+			],
+			[
 				"keybor",
 				"keyboard_events_json"
 			]
@@ -15,56 +59,26 @@
 			"file": "readInput.py",
 			"settings":
 			{
-				"buffer_size": 1023,
+				"buffer_size": 1181,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "data/keyInput.csv",
+			"file": "scikit-catssify.py",
 			"settings":
 			{
-				"buffer_size": 2565,
+				"buffer_size": 1457,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "estimator.py",
+			"file": "data/human/humanInput-1607759344.430425.csv",
 			"settings":
 			{
-				"buffer_size": 2693,
-				"encoding": "UTF-8",
+				"buffer_size": 1039,
 				"line_ending": "Windows"
-			}
-		},
-		{
-			"contents": "import os\nimport sys\n\nimport numpy as np\nimport pandas as pd\n# import matplotlib.pyplot as plt\nfrom IPython.display import clear_output\nfrom six.moves import urllib\n\nimport tensorflow.compat.v2.feature_column as hfg\n\nimport tensorflow as tf\nimport pdb\n# Load dataset.\ndftrain = pd.read_csv('https://storage.googleapis.com/tf-datasets/titanic/train.csv')\ndfeval = pd.read_csv('https://storage.googleapis.com/tf-datasets/titanic/eval.csv')\ny_train = dftrain.pop('survived')\ny_eval = dfeval.pop('survived')\npdb.set_trace()\ndftrain.head()\ndftrain.describe()\n\nCATEGORICAL_COLUMNS = ['sex', 'n_siblings_spouses', 'parch', 'class', 'deck',\n                       'embark_town', 'alone']\nNUMERIC_COLUMNS = ['age', 'fare']\n\nfeature_columns = []\nfor feature_name in CATEGORICAL_COLUMNS:\n  vocabulary = dftrain[feature_name].unique()\n  feature_columns.append(tf.feature_column.categorical_column_with_vocabulary_list(feature_name, vocabulary))\n\nfor feature_name in NUMERIC_COLUMNS:\n  feature_columns.append(tf.feature_column.numeric_column(feature_name, dtype=tf.float32))\n\ndef make_input_fn(data_df, label_df, num_epochs=10, shuffle=True, batch_size=32):\n  def input_function():\n    ds = tf.data.Dataset.from_tensor_slices((dict(data_df), label_df))\n    if shuffle:\n      ds = ds.shuffle(1000)\n    ds = ds.batch(batch_size).repeat(num_epochs)\n    return ds\n  return input_function\n\ntrain_input_fn = make_input_fn(dftrain, y_train)\neval_input_fn = make_input_fn(dfeval, y_eval, num_epochs=1, shuffle=False)\n\nlinear_est = tf.estimator.LinearClassifier(feature_columns=feature_columns)\nlinear_est.train(train_input_fn)\nresult = linear_est.evaluate(eval_input_fn)\n\nclear_output()\nprint(result)\n\n\n",
-			"file": "linearRegression.py",
-			"file_size": 1735,
-			"file_write_time": 132499759094331702,
-			"settings":
-			{
-				"buffer_size": 1682,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "classify.py",
-			"settings":
-			{
-				"buffer_size": 2994,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "datasets/petfinder-mini/petfinder-mini.csv",
-			"settings":
-			{
-				"buffer_size": 4729499,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
 			}
 		}
 	],
@@ -128,7 +142,19 @@
 		"selected_items":
 		[
 			[
+				"min",
+				"View: Toggle Minimap"
+			],
+			[
 				"wrap",
+				"Word Wrap: Toggle"
+			],
+			[
+				"refre",
+				"Project: Refresh Folders"
+			],
+			[
+				"word",
 				"Word Wrap: Toggle"
 			],
 			[
@@ -193,18 +219,53 @@
 	"expanded_folders":
 	[
 		"/C/Users/henry/Documents/sideProjects/catKeyboard",
-		"/C/Users/henry/Documents/sideProjects/catKeyboard/data"
+		"/C/Users/henry/Documents/sideProjects/catKeyboard/data",
+		"/C/Users/henry/Documents/sideProjects/catKeyboard/data/cat",
+		"/C/Users/henry/Documents/sideProjects/catKeyboard/data/human"
 	],
 	"file_history":
 	[
+		"/C/Users/henry/Documents/sideProjects/catKeyboard/data/human/humanInput-1606110846.9751906.csv",
+		"/C/Users/henry/Documents/sideProjects/catKeyboard/data/human/humanInput-1607754897.598342.csv",
+		"/C/Users/henry/Documents/sideProjects/catKeyboard/data/human/humanInput-1607755599.8281007.csv",
+		"/C/Users/henry/Documents/sideProjects/catKeyboard/data/human/humanInput-1606108540.7669113.csv",
+		"/C/Users/henry/Documents/sideProjects/catKeyboard/data/human/humanInput-1606110474.00446.csv",
+		"/C/Users/henry/Documents/sideProjects/catKeyboard/prod_data.txt",
+		"/C/Users/henry/Documents/sideProjects/catKeyboard/scikit-catssify.py",
+		"/C/Users/henry/Documents/sideProjects/catKeyboard/textClassification.py",
 		"/C/Users/henry/Documents/sideProjects/catKeyboard/catssify.py",
-		"/C/Users/henry/Documents/sideProjects/catKeyboard/abalone.py",
-		"/C/Users/henry/Documents/sideProjects/catKeyboard/codesInput",
+		"/C/Users/henry/Documents/sideProjects/catKeyboard/templates/base.html",
+		"/C/Users/henry/Documents/sideProjects/catKeyboard/app.py",
+		"/C/Users/henry/Documents/sideProjects/catKeyboard/data/cat/catInput.csv",
+		"/C/Users/henry/Documents/sideProjects/catKeyboard/data/cat/catInput-1606108341.3149226.csv",
+		"/C/Users/henry/Documents/sideProjects/catKeyboard/data/cat/catInput-10.csv",
+		"/C/Users/henry/Documents/sideProjects/catKeyboard/data/cat/catInput-9.csv",
+		"/C/Users/henry/Documents/sideProjects/catKeyboard/data/cat/catInput-3.csv",
+		"/C/Users/henry/Documents/sideProjects/catKeyboard/data/cat/catInput-8.csv",
+		"/C/Users/henry/Documents/sideProjects/catKeyboard/data/cat/catInput-7.csv",
+		"/C/Users/henry/Documents/sideProjects/catKeyboard/data/cat/catInput-6.csv",
+		"/C/Users/henry/Documents/sideProjects/catKeyboard/data/cat/catInput-5.csv",
+		"/C/Users/henry/Documents/sideProjects/catKeyboard/data/cat/catInput-4.csv",
+		"/C/Users/henry/Documents/sideProjects/catKeyboard/data/cat/catInput-2.csv",
+		"/C/Users/henry/Documents/sideProjects/catKeyboard/data/cat/catInput-1.csv",
+		"/C/Users/henry/Documents/sideProjects/catKeyboard/data/cat/catInput-0.csv",
+		"/C/Users/henry/Documents/sideProjects/catKeyboard/data/humanInput.csv",
+		"/C/Users/henry/Documents/sideProjects/catKeyboard/data/catInput.csv",
+		"/C/Program Files/WindowsApps/Microsoft.WindowsTerminal_1.4.3243.0_x64__8wekyb3d8bbwe/defaults.json",
+		"/C/Users/henry/AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json",
+		"/C/Users/henry/Documents/sideProjects/catKeyboard/textC-lassification.py",
+		"/C/Users/henry/Documents/sideProjects/catKeyboard/.gitignore",
+		"/C/Users/henry/Documents/sideProjects/catKeyboard/catssify_iliad.py",
+		"/C/Users/henry/Documents/sideProjects/catKeyboard/readInput.py",
+		"/C/Users/henry/Documents/sideProjects/catKeyboard/estimator.py",
+		"/C/Users/henry/Documents/sideProjects/catKeyboard/classify.py",
 		"/C/Users/henry/Documents/sideProjects/catKeyboard/data/keyInput.csv",
 		"/C/Users/henry/Documents/sideProjects/catKeyboard/data/codesInput.csv",
-		"/C/Users/henry/Documents/sideProjects/catKeyboard/data/catInput.csv",
+		"/C/Users/henry/Documents/sideProjects/catKeyboard/linearRegression.py",
+		"/C/Users/henry/Documents/sideProjects/catKeyboard/datasets/petfinder-mini/petfinder-mini.csv",
+		"/C/Users/henry/Documents/sideProjects/catKeyboard/abalone.py",
+		"/C/Users/henry/Documents/sideProjects/catKeyboard/codesInput",
 		"/C/Users/henry/Documents/sideProjects/catKeyboard/catInput.csv",
-		"/C/Users/henry/AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json",
 		"/C/Users/henry/Documents/sideProjects/catKeyboard/Dockerfile",
 		"/C/Users/henry/Documents/sideProjects/catKeyboard/catKeyboard.sublime-workspace",
 		"/C/Users/henry/Documents/sideProjects/catKeyboard/note.txt",
@@ -243,7 +304,7 @@
 	],
 	"find":
 	{
-		"height": 27.0
+		"height": 34.0
 	},
 	"find_in_files":
 	{
@@ -258,6 +319,11 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"esc",
+			"color",
+			"tokenizer",
+			"TFds",
+			"configure",
 			"input",
 			"target",
 			"urllib",
@@ -294,7 +360,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -303,15 +369,44 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1023,
+						"buffer_size": 1181,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								571,
-								577
+								20,
+								20
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "scikit-catssify.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1457,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1180,
+								1191
 							]
 						],
 						"settings":
@@ -322,156 +417,35 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "data/keyInput.csv",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2565,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								14,
-								14
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage",
-							"word_wrap": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
 					"stack_index": 1,
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "estimator.py",
-					"semi_transient": false,
+					"file": "data/human/humanInput-1607759344.430425.csv",
+					"semi_transient": true,
 					"settings":
 					{
-						"buffer_size": 2693,
+						"buffer_size": 1039,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								972,
-								972
+								0,
+								0
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 122.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "linearRegression.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1682,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								215,
-								215
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 162.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "classify.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2994,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2229,
-								2243
-							]
-						],
-						"settings":
-						{
-							"auto_name": "",
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 510.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "datasets/petfinder-mini/petfinder-mini.csv",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4729499,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								735560,
-								735566
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage",
-							"word_wrap": false
+							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 0,
 					"type": "text"
 				}
 			]
@@ -479,11 +453,11 @@
 	],
 	"incremental_find":
 	{
-		"height": 27.0
+		"height": 34.0
 	},
 	"input":
 	{
-		"height": 40.0
+		"height": 44.0
 	},
 	"layout":
 	{
@@ -520,7 +494,7 @@
 	"project": "catkeyboard.sublime-project",
 	"replace":
 	{
-		"height": 50.0
+		"height": 64.0
 	},
 	"save_all_on_build": false,
 	"select_file":
@@ -529,6 +503,10 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"read",
+				"readInput.py"
+			],
 			[
 				"lo",
 				"Resume-SE.log"
@@ -555,7 +533,7 @@
 	},
 	"select_symbol":
 	{
-		"height": 69.0,
+		"height": 392.0,
 		"last_filter": "",
 		"selected_items":
 		[
@@ -566,11 +544,11 @@
 	"settings":
 	{
 	},
-	"show_minimap": true,
+	"show_minimap": false,
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 277.0,
+	"side_bar_width": 246.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

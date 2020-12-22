@@ -2,6 +2,9 @@ import keyboard as k
 import json
 import pandas as pd
 import sys
+import datetime
+import csv
+import time
 
 if sys.argv[1] == 'c':
 	is_cat=True
@@ -26,15 +29,20 @@ for key in recorded:
 
 recorded_keys = {'input': keys_pressed, 'is_cat': is_cat}
 recorded_scan_codes = {'input': scan_codes, 'is_cat': is_cat}
+file_num = time.time()
+if is_cat:
+	file_path = f'data/cat/catInput-{file_num}.csv'
+else:
+	file_path = f'data/human/humanInput-{file_num}.csv'
 
-import csv
-with open('data/keyInput.csv', 'a') as f:
+with open(file_path, 'a') as f:
 	writer = csv.writer(f,delimiter=',', lineterminator='\n')
-	writer.writerow([keys_pressed, is_cat])
+	writer.writerow([keys_pressed])
 
-with open('data/codesInput.csv', 'a') as f:
-	writer = csv.writer(f,delimiter=',', lineterminator='\n')
-	writer.writerow([scan_codes, is_cat])
+
+# with open('data/codesInput.csv', 'a') as f:
+# 	writer = csv.writer(f,delimiter=',', lineterminator='\n')
+# 	writer.writerow([scan_codes, is_cat])
 
 print(keys_pressed)
 # 23xevents.to_csv('data/catInput.csv', mode='a', header=False)
